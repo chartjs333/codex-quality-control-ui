@@ -81,9 +81,28 @@ const theme = extendTheme({
       },
     },
     Button: {
-      baseStyle: {
-        fontFamily: "'Noto Sans', sans-serif",
-        fontWeight: 400,
+      variants: {
+        solid: {
+          bg: "#00202c",
+          color: "white",
+          _hover: { bg: "#00202c" },
+        },
+        ghost: {
+          bg: "#00202c",
+          color: "white",
+          _hover: { bg: "#00202c" },
+        },
+        outline: {
+          bg: "#00202c",
+          color: "white",
+          borderColor: "#00202c",
+          _hover: { bg: "#00202c" },
+        },
+        link: {
+          bg: "#00202c",
+          color: "white",
+          _hover: { bg: "#00202c" },
+        },
       },
     },
   },
