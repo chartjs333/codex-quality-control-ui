@@ -245,7 +245,7 @@ const PdfUploadView = () => {
                   <Text fontWeight="bold" mb={1}>Available links:</Text>
                   <VStack align="start" spacing={1}>
                     {Object.entries(response.gene_urls).map(([name, url]) => (
-                        <Link key={name} href={url} isExternal color="blue.500" textDecoration="underline">
+                        <Link key={name} href={url} isExternal color="brand.500" textDecoration="underline">
                           {name}
                         </Link>
                     ))}
@@ -488,14 +488,14 @@ const PdfUploadView = () => {
                 id="pdf-upload"
               />
               <label htmlFor="pdf-upload">
-                <Button as="span" leftIcon={<Upload />} colorScheme="blue">
+                <Button as="span" leftIcon={<Upload />} colorScheme="brand">
                   Select PDF
                 </Button>
               </label>
               {selectedFile && <Text mt={2}>{selectedFile.name}</Text>}
               <Button
                 ml={2}
-                colorScheme="green"
+                colorScheme="success"
                 onClick={handleUpload}
                 isLoading={uploadMutation.isPending}
                 isDisabled={!selectedFile}
@@ -546,8 +546,8 @@ const PdfUploadView = () => {
                 <Flex justify="space-between" align="center" mb={3}>
                   <Heading size="md">Patients in Document</Heading>
                   <Flex>
-                    <Button 
-                      colorScheme="green" 
+                    <Button
+                      colorScheme="success"
                       size="sm" 
                       mr={2}
                       leftIcon={<span role="img" aria-label="download">📊</span>}
@@ -616,7 +616,7 @@ const PdfUploadView = () => {
                                   {patient.family ? `Family ${patient.family} - Patient ${patient.patient}` : `Patient ${patient.patient}`}
                                 </Text>
                             </Box>
-                              <Badge colorScheme="blue" mr={2}>
+                              <Badge colorScheme="brand" mr={2}>
                                 {patient.family ? `Family ${patient.family}` : 'No Family'}
                               </Badge>
                               <PatientIdentifierEditModal
@@ -637,7 +637,7 @@ const PdfUploadView = () => {
                           <VStack align="start" spacing={4} width="100%">
                             {/* Display motor_symptoms with the existing format */}
                             <Box width="100%">
-                              <Heading size="sm" mb={2} color="blue.600">Motor Symptoms</Heading>
+                              <Heading size="sm" mb={2} color="brand.600">Motor Symptoms</Heading>
                               <Box p={3} borderWidth="1px" borderRadius="md" bg="gray.50">
                                     {(patientDetails.motor_symptoms || '').split(';').map((symptom, idx) => (
                                   <Text key={idx} mb={1}>
@@ -649,7 +649,7 @@ const PdfUploadView = () => {
 
                             {/* Display non_motor_symptoms with the existing format */}
                             <Box width="100%">
-                              <Heading size="sm" mb={2} color="green.600">Non-Motor Symptoms</Heading>
+                              <Heading size="sm" mb={2} color="success.500">Non-Motor Symptoms</Heading>
                               <Box p={3} borderWidth="1px" borderRadius="md" bg="gray.50">
                                     {(patientDetails.non_motor_symptoms || '').split(';').map((symptom, idx) => (
                                   <Text key={idx} mb={1}>
@@ -665,7 +665,7 @@ const PdfUploadView = () => {
                               key !== 'individual_id' && key !== 'family_id'
                             ).map(([key, value]) => (
                               <Box key={key} width="100%">
-                                <Heading size="sm" mb={2} color="purple.600">
+                                <Heading size="sm" mb={2} color="accent.500">
                                   {key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
                                 </Heading>
                                 <Box p={3} borderWidth="1px" borderRadius="md" bg="gray.50">
@@ -744,7 +744,7 @@ const PdfUploadView = () => {
               }}
             />
             <Button
-              colorScheme="green"
+              colorScheme="success"
               isDisabled={!selectedZip || uploadingZip}
               onClick={handleZipUpload}
             >
@@ -760,7 +760,7 @@ const PdfUploadView = () => {
             )}
 
             {downloadReady && (
-              <Button colorScheme="blue" onClick={handleDownloadResults}>
+              <Button colorScheme="brand" onClick={handleDownloadResults}>
                 Download Results
               </Button>
             )}
