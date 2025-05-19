@@ -175,20 +175,24 @@ const EditView = ({ onEditFile }) => {
                   <Td>{file}</Td>
                   <Td w="160px">
                     <IconButton
-                        aria-label="Edit file"
-                        icon={<Edit />}
-                        size="sm"
-                        colorScheme="success"
-                        variant="ghost"
-                        mr={2}
-                        onClick={() => handleEditFile(file)}
+                      aria-label="Edit file"
+                      icon={<Edit />}
+                      size="sm"
+                      variant="ghost"
+                      bg="transparent"
+                      color="#00202c"
+                      _hover={{ bg: "transparent" }}
+                      mr={2}
+                      onClick={() => handleEditFile(file)}
                     />
                     <IconButton
                       aria-label="Update file"
                       icon={<Upload />}
                       size="sm"
-                      colorScheme="brand"
                       variant="ghost"
+                      bg="transparent"
+                      color="#00202c"
+                      _hover={{ bg: "transparent" }}
                       mr={2}
                       isLoading={updateFileMutation.isLoading}
                       onClick={() =>
@@ -206,8 +210,10 @@ const EditView = ({ onEditFile }) => {
                       aria-label="Delete file"
                       icon={<Trash2 />}
                       size="sm"
-                      colorScheme="error"
                       variant="ghost"
+                      bg="transparent"
+                      color="#00202c"
+                      _hover={{ bg: "transparent" }}
                       onClick={() => handleDeleteFile(file)}
                       isLoading={deleteFileMutation.isLoading}
                     />
