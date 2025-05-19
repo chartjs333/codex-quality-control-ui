@@ -62,7 +62,12 @@ const QualityControlDashboard = () => {
         <Image src="/GP2_logo.png" alt="GP2 logo" maxH="50px" />
       </Flex>
 
-      <Tabs index={activeMainTab} onChange={setActiveMainTab}>
+      <Tabs
+        index={activeMainTab}
+        onChange={setActiveMainTab}
+        isLazy
+        lazyBehavior="unmount"
+      >
         <TabList>
           <Tab _selected={{ color: "blue.500", borderColor: "blue.500" }}>
             Genes
@@ -74,7 +79,12 @@ const QualityControlDashboard = () => {
 
         <TabPanels>
           <TabPanel p={0}>
-            <Tabs index={activeGeneSubTab} onChange={handleTabChange}>
+            <Tabs
+              index={activeGeneSubTab}
+              onChange={handleTabChange}
+              isLazy
+              lazyBehavior="unmount"
+            >
               <TabList mb={4}>
                 <Tab
                   _selected={{ color: "green.500", borderColor: "green.500" }}
