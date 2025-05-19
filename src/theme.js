@@ -38,6 +38,10 @@ const theme = extendTheme({
     initialColorMode: "light",
     useSystemColorMode: false,
   },
+  fonts: {
+    heading: "'Noto Serif', serif",
+    body: "'Noto Sans', sans-serif",
+  },
   colors: {
     brand: {
       50: colors.background,
@@ -60,6 +64,8 @@ const theme = extendTheme({
       body: {
         bg: colors.background,
         color: colors.text,
+        fontFamily: "'Noto Sans', sans-serif",
+        fontWeight: 400,
       },
       a: {
         color: colors.link,
@@ -68,6 +74,12 @@ const theme = extendTheme({
     },
   },
   components: {
+    Heading: {
+      baseStyle: {
+        fontFamily: "'Noto Serif', serif",
+        fontWeight: 400,
+      },
+    },
     Button: {
       variants: {
         solid: {
