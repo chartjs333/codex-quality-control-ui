@@ -53,7 +53,7 @@ const QualityControlDashboard = () => {
       shadow="md"
       animation={`${fadeIn} 0.5s ease-in`}
     >
-      <Heading as="h1" size="xl" mb={6} color="red.500">
+      <Heading as="h1" size="xl" mb={6} color="#00202c">
         Quality Control
       </Heading>
 

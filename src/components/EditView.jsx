@@ -178,7 +178,7 @@ const EditView = ({ onEditFile }) => {
                         aria-label="Edit file"
                         icon={<Edit />}
                         size="sm"
-                        colorScheme="green"
+                        colorScheme="success"
                         variant="ghost"
                         mr={2}
                         onClick={() => handleEditFile(file)}
@@ -187,7 +187,7 @@ const EditView = ({ onEditFile }) => {
                       aria-label="Update file"
                       icon={<Upload />}
                       size="sm"
-                      colorScheme="blue"
+                      colorScheme="brand"
                       variant="ghost"
                       mr={2}
                       isLoading={updateFileMutation.isLoading}
@@ -206,7 +206,7 @@ const EditView = ({ onEditFile }) => {
                       aria-label="Delete file"
                       icon={<Trash2 />}
                       size="sm"
-                      colorScheme="red"
+                      colorScheme="error"
                       variant="ghost"
                       onClick={() => handleDeleteFile(file)}
                       isLoading={deleteFileMutation.isLoading}
@@ -221,13 +221,13 @@ const EditView = ({ onEditFile }) => {
       <VStack width="40%" spacing={4} align="stretch">
         <Button
           leftIcon={<Download />}
-          colorScheme="teal"
+          colorScheme="brand"
           size="md"
           onClick={handleDownloadConfiguration}
         >
           Download Configuration
         </Button>
-        <Button leftIcon={<Upload />} colorScheme="purple" size="md" as="label">
+        <Button leftIcon={<Upload />} colorScheme="accent" size="md" as="label">
           Upload Configuration
           <input
             type="file"
