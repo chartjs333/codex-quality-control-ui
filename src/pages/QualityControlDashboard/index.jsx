@@ -9,6 +9,8 @@ import {
   Heading,
   useColorModeValue,
   keyframes,
+  Flex,
+  Image,
 } from "@chakra-ui/react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -53,9 +55,12 @@ const QualityControlDashboard = () => {
       shadow="md"
       animation={`${fadeIn} 0.5s ease-in`}
     >
-      <Heading as="h1" size="xl" mb={6} color="#00202c">
-        Quality Control
-      </Heading>
+      <Flex justify="space-between" align="center" mb={6}>
+        <Heading as="h1" size="xl" color="#00202c">
+          Quality Control
+        </Heading>
+        <Image src="/GP2_logo.png" alt="GP2 logo" maxH="50px" />
+      </Flex>
 
       <Tabs index={activeMainTab} onChange={setActiveMainTab}>
         <TabList>
