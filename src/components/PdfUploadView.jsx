@@ -23,9 +23,13 @@ import {
   Flex,
   Tabs, 
   TabList, 
-  TabPanels, 
-  Tab, 
+  TabPanels,
+  Tab,
   TabPanel,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
 } from "@chakra-ui/react";
 import { Upload } from "lucide-react";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
@@ -74,6 +78,7 @@ const PdfUploadView = () => {
   const [uploadingZip, setUploadingZip] = useState(false);
   const [taskId, setTaskId] = useState(null);
   const [downloadReady, setDownloadReady] = useState(false);
+  const [geneUrl, setGeneUrl] = useState(null);
 
 // Function to toggle expanded state
   const togglePatientDetails = (patientId) => {
@@ -238,36 +243,24 @@ const PdfUploadView = () => {
         })
         .then((response) => {
           // Проверяем, есть ли в ответе gene_urls
-          if (response.gene_urls && Object.keys(response.gene_urls).length > 0) {
-            // Создаем React-компонент для отображения ссылок
-            const GeneLinks = () => (
-                <Box mt={2}>
-                  <Text fontWeight="bold" mb={1}>Available links:</Text>
-                  <VStack align="start" spacing={1}>
-                    {Object.entries(response.gene_urls).map(([name, url]) => (
-                        <Link key={name} href={url} isExternal color="brand.500" textDecoration="underline">
-                          {name}
-                        </Link>
-                    ))}
-                  </VStack>
-                </Box>
-            );
-
-            // Показываем toast с компонентом ссылок
+          if (response.gene_urls) {
+            setGeneUrl(response.gene_urls);
             toast({
               title: "Data exported to MDSGene",
               description: (
-                  <>
-                    {response.message || "Data successfully processed to Excel format"}
-                    <GeneLinks />
-                  </>
+                <>
+                  {response.message || "Data successfully processed to Excel format"}{" "}
+                  <Link href={response.gene_urls} isExternal color="brand.500" textDecoration="underline">
+                    Open MDSGene
+                  </Link>
+                </>
               ),
               status: "success",
-              duration: 5000, // Увеличиваем время, чтобы пользователь успел увидеть ссылки
+              duration: 5000,
               isClosable: true,
             });
           } else {
-            // Если нет ссылок, показываем обычное уведомление
+            // Если нет ссылки, показываем обычное уведомление
             toast({
               title: "Data exported to MDSGene",
               description: response.message || "Data successfully processed to Excel format",
@@ -503,6 +496,22 @@ const PdfUploadView = () => {
                 Upload
               </Button>
             </Box>
+
+            {geneUrl && (
+              <Alert status="info" mt={4} borderRadius="md">
+                <AlertIcon />
+                <Box>
+                  <AlertTitle>MDSGene Link Available</AlertTitle>
+                  <AlertDescription>
+                    You can access the exported data{' '}
+                    <Link href={geneUrl} isExternal color="brand.500" textDecoration="underline">
+                      here
+                    </Link>
+                    .
+                  </AlertDescription>
+                </Box>
+              </Alert>
+            )}
 
             {/* Publication Details Header with Edit Button */}
             {publicationDetails && publicationDetails.publication_details && (
