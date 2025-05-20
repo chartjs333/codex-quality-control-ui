@@ -170,57 +170,58 @@ const EditView = ({ onEditFile }) => {
               </Tr>
             </Thead>
             <Tbody>
-              {files.map((file) => (
-                <Tr key={file}>
-                  <Td>{file}</Td>
-                  <Td w="160px">
-                    <IconButton
-                      aria-label="Edit file"
-                      icon={<Edit />}
-                      size="sm"
-                      variant="ghost"
-                      bg="transparent"
-                      color="#00202c"
-                      _hover={{ bg: "transparent" }}
-                      mr={2}
-                      onClick={() => handleEditFile(file)}
-                    />
-                    <IconButton
-                      aria-label="Update file"
-                      icon={<Upload />}
-                      size="sm"
-                      variant="ghost"
-                      bg="transparent"
-                      color="#00202c"
-                      _hover={{ bg: "transparent" }}
-                      mr={2}
-                      isLoading={updateFileMutation.isLoading}
-                      onClick={() =>
-                        document.getElementById(`file-input-${file}`).click()
-                      }
-                    />
-                    <input
-                      id={`file-input-${file}`}
-                      type="file"
-                      hidden
-                      accept=".xls,.xlsx"
-                      onChange={(e) => handleUpdateFile(file, e)}
-                    />
-                    <IconButton
-                      aria-label="Delete file"
-                      icon={<Trash2 />}
-                      size="sm"
-                      variant="ghost"
-                      bg="transparent"
-                      color="#00202c"
-                      _hover={{ bg: "transparent" }}
-                      onClick={() => handleDeleteFile(file)}
-                      isLoading={deleteFileMutation.isLoading}
-                    />
-                  </Td>
-                </Tr>
-              ))}
-            </Tbody>
+{files.filter(file => file.includes("auto_created"))
+                .map((file) => (
+                  <Tr key={file}>
+                    <Td>{file}</Td>
+                    <Td w="160px">
+                      <IconButton
+                        aria-label="Edit file"
+                        icon={<Edit />}
+                        size="sm"
+                        variant="ghost"
+                        bg="transparent"
+                        color="#00202c"
+                        _hover={{ bg: "transparent" }}
+                        mr={2}
+                        onClick={() => handleEditFile(file)}
+                      />
+                      <IconButton
+                        aria-label="Update file"
+                        icon={<Upload />}
+                        size="sm"
+                        variant="ghost"
+                        bg="transparent"
+                        color="#00202c"
+                        _hover={{ bg: "transparent" }}
+                        mr={2}
+                        isLoading={updateFileMutation.isLoading}
+                        onClick={() =>
+                          document.getElementById(`file-input-${file}`).click()
+                        }
+                      />
+                      <input
+                        id={`file-input-${file}`}
+                        type="file"
+                        hidden
+                        accept=".xls,.xlsx"
+                        onChange={(e) => handleUpdateFile(file, e)}
+                      />
+                      <IconButton
+                        aria-label="Delete file"
+                        icon={<Trash2 />}
+                        size="sm"
+                        variant="ghost"
+                        bg="transparent"
+                        color="#00202c"
+                        _hover={{ bg: "transparent" }}
+                        onClick={() => handleDeleteFile(file)}
+                        isLoading={deleteFileMutation.isLoading}
+                      />
+                    </Td>
+                  </Tr>
+                ))}
+              </Tbody>
           </Table>
         )}
       </Box>

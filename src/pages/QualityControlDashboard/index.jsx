@@ -59,7 +59,7 @@ const QualityControlDashboard = () => {
         <Heading as="h1" size="xl" color="#00202c">
           Quality Control
         </Heading>
-        <Image src="/GP2_logo.png" alt="GP2 logo" maxH="50px" />
+        <Image src="/GP2_logo.svg" alt="GP2 logo" maxH="50px" />
       </Flex>
 
       <Tabs index={activeMainTab} onChange={setActiveMainTab}>
