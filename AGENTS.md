@@ -96,3 +96,35 @@ src/
 - Use responsive styles with the Chakra UI breakpoint system.
 - Leverage Chakra UI hooks for enhanced functionality.
 
+# Задача: Добавить параметр `comparison=true` к ссылке экспорта данных
+
+## Цель
+
+Добавить параметр `comparison=true` к ссылке на экспортированные данные (`geneUrl`) для обозначения, что запрос инициирован в контексте сравнения данных.
+
+## Требования
+
+* Обновить ссылку `here`, чтобы она включала параметр `comparison=true`.
+* Если `geneUrl` уже содержит параметры (включает `?`), использовать `&comparison=true`.
+* Если параметров нет, использовать `?comparison=true`.
+* Изменения должны быть выполнены с использованием шаблонных строк и проверки через `includes('?')`.
+
+## Текущее поведение
+
+```jsx
+<Link href={geneUrl} isExternal color="brand.500" textDecoration="underline">
+  here
+</Link>
+```
+
+## Новое поведение
+
+```jsx
+<Link href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`} isExternal color="brand.500" textDecoration="underline">
+  here
+</Link>
+```
+
+## Ожидаемый результат
+
+Переход по ссылке `here` инициирует запрос с параметром `comparison=true`, который может быть использован для логики обработки данных в режиме сравнения.
