@@ -504,7 +504,12 @@ const PdfUploadView = () => {
                   <AlertTitle>MDSGene Link Available</AlertTitle>
                   <AlertDescription>
                     You can access the exported data{' '}
-                    <Link href={geneUrl} isExternal color="brand.500" textDecoration="underline">
+                    <Link
+                      href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`}
+                      isExternal
+                      color="brand.500"
+                      textDecoration="underline"
+                    >
                       here
                     </Link>
                     .
