@@ -96,35 +96,62 @@ src/
 - Use responsive styles with the Chakra UI breakpoint system.
 - Leverage Chakra UI hooks for enhanced functionality.
 
-# Задача: Добавить параметр `comparison=true` к ссылке экспорта данных
+# Задача: Привести стиль уведомления к цветовой гамме gp2.org
 
 ## Цель
 
-Добавить параметр `comparison=true` к ссылке на экспортированные данные (`geneUrl`) для обозначения, что запрос инициирован в контексте сравнения данных.
-
-## Требования
-
-* Обновить ссылку `here`, чтобы она включала параметр `comparison=true`.
-* Если `geneUrl` уже содержит параметры (включает `?`), использовать `&comparison=true`.
-* Если параметров нет, использовать `?comparison=true`.
-* Изменения должны быть выполнены с использованием шаблонных строк и проверки через `includes('?')`.
+Обновить компонент `Alert`, отображающий ссылку на экспортированные данные, чтобы его внешний вид соответствовал фирменной цветовой гамме gp2.org.
 
 ## Текущее поведение
 
 ```jsx
-<Link href={geneUrl} isExternal color="brand.500" textDecoration="underline">
-  here
-</Link>
+<Alert status="info" mt={4} borderRadius="md">
+  <AlertIcon />
+  <Box>
+    <AlertTitle>MDSGene Link Available</AlertTitle>
+    <AlertDescription>
+      You can access the exported data{' '}
+      <Link href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`} isExternal color="brand.500" textDecoration="underline">
+        here
+      </Link>.
+    </AlertDescription>
+  </Box>
+</Alert>
 ```
 
-## Новое поведение
+## Требования
+
+* Использовать цветовую палитру gp2.org:
+
+    * Основной фон: `#F4F7FA`
+    * Цвет заголовка: `#1C2D5A`
+    * Цвет текста: `#4C5C74`
+    * Цвет ссылок: `#0076D1`
+* Настроить `Alert`, `AlertTitle`, `AlertDescription` и `Link` с учетом этих цветов.
+* Обеспечить хорошую визуализацию как в светлой, так и в темной теме.
+
+## Новое поведение (примерный стиль)
 
 ```jsx
-<Link href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`} isExternal color="brand.500" textDecoration="underline">
-  here
-</Link>
+<Alert backgroundColor="#F4F7FA" mt={4} borderRadius="md" padding={4}>
+  <AlertIcon color="#0076D1" />
+  <Box>
+    <AlertTitle color="#1C2D5A">MDSGene Link Available</AlertTitle>
+    <AlertDescription color="#4C5C74">
+      You can access the exported data{' '}
+      <Link
+        href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`}
+        isExternal
+        color="#0076D1"
+        textDecoration="underline"
+      >
+        here
+      </Link>.
+    </AlertDescription>
+  </Box>
+</Alert>
 ```
 
 ## Ожидаемый результат
 
-Переход по ссылке `here` инициирует запрос с параметром `comparison=true`, который может быть использован для логики обработки данных в режиме сравнения.
+Уведомление визуально соответствует дизайну gp2.org и сохраняет функциональность перехода по ссылке с параметром `comparison=true`.
