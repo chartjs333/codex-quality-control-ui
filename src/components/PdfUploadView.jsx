@@ -30,6 +30,7 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { Upload } from "lucide-react";
 import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
@@ -79,6 +80,12 @@ const PdfUploadView = () => {
   const [taskId, setTaskId] = useState(null);
   const [downloadReady, setDownloadReady] = useState(false);
   const [geneUrl, setGeneUrl] = useState(null);
+
+  // Colors for the gp2.org alert style
+  const alertBg = useColorModeValue("#F4F7FA", "gray.700");
+  const titleColor = useColorModeValue("#1C2D5A", "whiteAlpha.900");
+  const textColor = useColorModeValue("#4C5C74", "gray.200");
+  const linkColor = useColorModeValue("#0076D1", "blue.300");
 
 // Function to toggle expanded state
   const togglePatientDetails = (patientId) => {
@@ -498,16 +505,16 @@ const PdfUploadView = () => {
             </Box>
 
             {geneUrl && (
-              <Alert status="info" mt={4} borderRadius="md">
-                <AlertIcon />
+              <Alert bg={alertBg} mt={4} borderRadius="md" padding={4}>
+                <AlertIcon color={linkColor} />
                 <Box>
-                  <AlertTitle>MDSGene Link Available</AlertTitle>
-                  <AlertDescription>
+                  <AlertTitle color={titleColor}>MDSGene Link Available</AlertTitle>
+                  <AlertDescription color={textColor}>
                     You can access the exported data{' '}
                     <Link
                       href={`${geneUrl}${geneUrl.includes('?') ? '&' : '?'}comparison=true`}
                       isExternal
-                      color="brand.500"
+                      color={linkColor}
                       textDecoration="underline"
                     >
                       here
