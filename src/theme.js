@@ -4,7 +4,7 @@ const colors = {
   primary: "#062A1F",
   secondary: "#BADAD3",
   accent: "#D6C34E",
-  background: "#FDF5E6",
+  background: "#FFFFFF",
   text: "#000000",
   error: "#B00020",
   success: "#2E7D32",

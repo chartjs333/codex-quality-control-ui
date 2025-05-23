@@ -1,8 +1,8 @@
 import axios from "axios";
 
 // const BASE_URL = "http://141.83.25.94:8001/api";
-const BASE_URL = "http://35.232.247.212:8000/api";
-// const BASE_URL = "http://127.0.0.1:8000/api";
+// const BASE_URL = "http://35.232.247.212:8000/api";
+const BASE_URL = "http://127.0.0.1:8000/api";
 
 export const filesQuery = () => ({
   queryKey: ["files"],
